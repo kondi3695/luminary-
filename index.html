@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luminary Studio — Home</title>
+
+  <!-- ✅ Google Tag Manager — replace GTM-XXXXXXX with your GTM container ID -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- End GTM Head -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a18;
+      --cream: #f5f2eb;
+      --gold: #c9a84c;
+      --gold-light: #e8d49a;
+      --muted: #7a7870;
+      --border: #ddd9ce;
+      --white: #ffffff;
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--ink); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-links a.active { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid; place-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
+        var(--cream);
+    }
+    .hero-tag {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+    }
+    .hero-tag::before, .hero-tag::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--gold-light);
+    }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1.05; color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p {
+      font-size: 1.1rem; color: var(--muted); max-width: 520px; margin: 0 auto 2.5rem;
+      font-weight: 300; line-height: 1.8;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--ink); color: var(--cream);
+      text-decoration: none; font-size: 0.875rem;
+      letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+      border: 2px solid var(--ink);
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn:hover { background: transparent; color: var(--ink); }
+    .btn-outline {
+      background: transparent; color: var(--ink);
+      margin-left: 1rem;
+    }
+    .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+    /* ── FEATURES ── */
+    .section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .section h2 {
+      font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--ink); margin-bottom: 1rem; line-height: 1.2;
+    }
+    .section h2 em { font-style: italic; color: var(--gold); }
+    .section > p { color: var(--muted); max-width: 520px; margin-bottom: 3rem; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+    }
+    .feature-card {
+      background: var(--cream); padding: 2.5rem 2rem;
+      transition: background 0.25s;
+    }
+    .feature-card:hover { background: var(--white); }
+    .feature-icon {
+      font-size: 1.8rem; margin-bottom: 1.2rem; display: block;
+    }
+    .feature-card h3 {
+      font-family: var(--serif); font-weight: 600; font-size: 1.25rem;
+      margin-bottom: 0.6rem; color: var(--ink);
+    }
+    .feature-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--ink); color: var(--cream);
+      text-align: center; padding: 5rem 2rem;
+    }
+    .cta-strip h2 {
+      font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+    .cta-strip h2 em { font-style: italic; color: var(--gold); }
+    .cta-strip p { color: rgba(245,242,235,0.65); margin-bottom: 2rem; }
+    .cta-strip .btn {
+      background: var(--gold); color: var(--ink); border-color: var(--gold);
+    }
+    .cta-strip .btn:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cream); border-top: 1px solid var(--border);
+      text-align: center; padding: 2rem;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ GTM No-Script fallback (required immediately after <body>) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End GTM No-Script -->
+
+  <nav>
+    <a href="index.html" class="nav-logo">Luminary<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <p class="hero-tag">Creative Studio</p>
+      <h1>Where Ideas Become <em>Luminous</em></h1>
+      <p>We craft digital experiences that are bold, refined, and built to last. Your vision — elevated.</p>
+      <a href="contact.html" class="btn">Start a Project</a>
+      <a href="about.html" class="btn btn-outline">Learn More</a>
+    </div>
+  </section>
+
+  <div class="section">
+    <p class="section-label">What We Do</p>
+    <h2>Craft. Strategy. <em>Execution.</em></h2>
+    <p>A full-service studio offering end-to-end creative solutions tailored to your goals.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">✦</span>
+        <h3>Brand Identity</h3>
+        <p>From logo to language, we build identities that resonate deeply with your audience and stand the test of time.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">◈</span>
+        <h3>Web Design</h3>
+        <p>Purposeful layouts, refined typography, and seamless interactions — websites that are as functional as they are beautiful.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">◎</span>
+        <h3>Digital Strategy</h3>
+        <p>Data-driven insights merged with creative thinking to build campaigns that convert and resonate.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <h2>Ready to build something <em>remarkable?</em></h2>
+    <p>Reach out and let's talk about your next project.</p>
+    <a href="contact.html" class="btn">Get in Touch</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Luminary Studio &nbsp;|&nbsp; <a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a></p>
+  </footer>
+
+</body>
+</html>
