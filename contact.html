@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luminary Studio — Contact</title>
+
+  <!-- ✅ Google Tag Manager — replace GTM-XXXXXXX with your GTM container ID -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- End GTM Head -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1a18; --cream: #f5f2eb; --gold: #c9a84c;
+      --gold-light: #e8d49a; --muted: #7a7870; --border: #ddd9ce;
+      --white: #ffffff; --error: #c0392b; --success: #2e7d32;
+      --serif: 'Cormorant Garamond', serif; --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-links a.active { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 6rem 2.5rem 3rem; max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .page-hero .tag { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .page-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1rem; }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero p { color: var(--muted); font-size: 1rem; font-weight: 300; line-height: 1.8; }
+
+    /* ── LAYOUT ── */
+    .contact-layout {
+      max-width: 1000px; margin: 0 auto;
+      padding: 3rem 2.5rem 6rem;
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start;
+    }
+    @media (max-width: 760px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* ── CONTACT INFO ── */
+    .info-label { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .info-item { margin-bottom: 2rem; }
+    .info-item h4 { font-family: var(--serif); font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+    .info-item p, .info-item a { color: var(--muted); font-size: 0.9rem; text-decoration: none; }
+    .info-item a:hover { color: var(--gold); }
+
+    .divider-v { width: 100%; height: 1px; background: var(--border); margin: 2rem 0; }
+
+    .social-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .social-links a {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); padding: 0.4rem 0.9rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── FORM ── */
+    /*
+      ✅ GTM Form Tracking Notes:
+      - The <form> has id="contact-form" — use this in GTM trigger (Form ID = contact-form)
+      - Each field has a descriptive name attribute for GTM Form Field data capture
+      - GTM Trigger type: "Form Submission"
+      - In GTM: Create a trigger → Form Submission → All Forms (or filter by Form ID = contact-form)
+      - Then attach that trigger to a GA4 event tag or any other tag
+    */
+
+    .form-heading {
+      font-family: var(--serif); font-weight: 300; font-size: 1.6rem;
+      margin-bottom: 0.4rem; color: var(--ink);
+    }
+    .form-sub { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; line-height: 1.7; }
+
+    form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 0.35rem; }
+    label { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); font-weight: 500; }
+    label .req { color: var(--gold); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      font-family: var(--sans); font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+    textarea { resize: vertical; min-height: 120px; }
+    select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7870' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+
+    /* Radio group */
+    .radio-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.25rem; }
+    .radio-label {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.875rem; color: var(--muted); cursor: pointer;
+      border: 1px solid var(--border); padding: 0.5rem 1rem;
+      background: var(--white); transition: border-color 0.2s, color 0.2s;
+    }
+    input[type="radio"] { accent-color: var(--gold); width: 14px; height: 14px; }
+    input[type="radio"]:checked + span { color: var(--ink); }
+    .radio-label:has(input:checked) { border-color: var(--gold); }
+
+    /* Checkbox */
+    .checkbox-label {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.85rem; color: var(--muted); cursor: pointer; line-height: 1.5;
+    }
+    input[type="checkbox"] { accent-color: var(--gold); width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; }
+
+    /* Submit */
+    .submit-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 1rem 2.5rem;
+      background: var(--ink); color: var(--cream);
+      font-family: var(--sans); font-size: 0.875rem;
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+      border: 2px solid var(--ink); cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      align-self: flex-start;
+    }
+    .submit-btn:hover { background: transparent; color: var(--ink); }
+
+    /* ── SUCCESS / ERROR MESSAGES ── */
+    /*
+      These states are shown via CSS :target — no JavaScript needed.
+      After form submission, redirect to contact.html#success or contact.html#error
+      Set your form action to point to your backend/service (Formspree, Netlify, etc.)
+    */
+
+    .message-box {
+      display: none; padding: 1.2rem 1.5rem;
+      border-left: 3px solid; font-size: 0.9rem; line-height: 1.6;
+    }
+    #success:target .message-box { display: block; border-color: var(--success); background: #f0faf0; color: var(--success); }
+    #error:target .message-box   { display: block; border-color: var(--error);   background: #fdf3f2; color: var(--error); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--cream); border-top: 1px solid var(--border); text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ GTM No-Script fallback -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Luminary<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Get In Touch</p>
+    <h1>Let's build something <em>together</em></h1>
+    <p>Tell us about your project and we'll get back to you within one business day.</p>
+  </div>
+
+  <div class="contact-layout">
+
+    <!-- LEFT: Contact Info -->
+    <div class="info-col">
+      <p class="info-label">Details</p>
+
+      <div class="info-item">
+        <h4>Studio Address</h4>
+        <p>12 Creative Quarter<br>Banjara Hills, Hyderabad<br>Telangana 500034</p>
+      </div>
+
+      <div class="info-item">
+        <h4>Email</h4>
+        <a href="mailto:hello@luminarystudio.in">hello@luminarystudio.in</a>
+      </div>
+
+      <div class="info-item">
+        <h4>Phone</h4>
+        <a href="tel:+914012345678">+91 40 1234 5678</a>
+      </div>
+
+      <div class="info-item">
+        <h4>Working Hours</h4>
+        <p>Mon–Fri, 9am – 6pm IST</p>
+      </div>
+
+      <div class="divider-v"></div>
+
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Behance</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="form-col">
+
+      <!-- ✅ Success message (shown when redirected to contact.html#success) -->
+      <div id="success">
+        <div class="message-box">
+          ✓ &nbsp;Thank you! Your message has been received. We'll be in touch within one business day.
+        </div>
+      </div>
+
+      <!-- ✅ Error message (shown when redirected to contact.html#error) -->
+      <div id="error">
+        <div class="message-box">
+          ✗ &nbsp;Something went wrong. Please try again or email us directly at hello@luminarystudio.in.
+        </div>
+      </div>
+
+      <h2 class="form-heading">Send us a message</h2>
+      <p class="form-sub">All fields marked <span style="color:var(--gold)">*</span> are required.</p>
+
+      <!--
+        ✅ FORM CONFIGURATION:
+        - action: Replace with your form endpoint (Formspree, Netlify Forms, custom backend, etc.)
+          • Formspree example: action="https://formspree.io/f/YOUR_FORM_ID"
+          • Netlify: add netlify attribute, set action="contact.html#success"
+          • Custom backend: set action to your API endpoint
+        - method: POST (standard)
+        - id="contact-form" — used by GTM to identify this form for tracking
+        - GTM will fire on "Form Submission" trigger matching Form ID = contact-form
+      -->
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+      >
+
+        <!-- Hidden field: tells Formspree where to redirect on success -->
+        <input type="hidden" name="_next" value="contact.html#success" />
+
+        <div class="form-row">
+          <div class="field">
+            <label for="first_name">First Name <span class="req">*</span></label>
+            <input type="text" id="first_name" name="first_name" placeholder="Arjun" required />
+          </div>
+          <div class="field">
+            <label for="last_name">Last Name <span class="req">*</span></label>
+            <input type="text" id="last_name" name="last_name" placeholder="Mehta" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+        </div>
+
+        <div class="field">
+          <label for="company">Company / Organisation</label>
+          <input type="text" id="company" name="company" placeholder="Your Company Ltd." />
+        </div>
+
+        <div class="field">
+          <label for="service">Service Interested In <span class="req">*</span></label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option value="brand_identity">Brand Identity</option>
+            <option value="web_design">Web Design</option>
+            <option value="digital_strategy">Digital Strategy</option>
+            <option value="full_package">Full Studio Package</option>
+            <option value="other">Other / Not Sure</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Project Budget</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="budget" value="under_50k" />
+              <span>Under ₹50k</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="budget" value="50k_2l" />
+              <span>₹50k – ₹2L</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="budget" value="2l_5l" />
+              <span>₹2L – ₹5L</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="budget" value="over_5l" />
+              <span>₹5L+</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Your Message <span class="req">*</span></label>
+          <textarea id="message" name="message" placeholder="Tell us about your project, goals, and timeline…" required></textarea>
+        </div>
+
+        <div class="field">
+          <label class="checkbox-label">
+            <input type="checkbox" name="consent" value="yes" required />
+            <span>I agree to be contacted by Luminary Studio regarding my enquiry. <span class="req">*</span></span>
+          </label>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message →</button>
+
+      </form>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Luminary Studio &nbsp;|&nbsp; <a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a></p>
+  </footer>
+
+</body>
+</html>
